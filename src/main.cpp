@@ -35,7 +35,8 @@ void check_arguments(int argc, char* argv[]) {
     exit(EXIT_FAILURE);
   }
 }
-
+// ofstream是从内存到硬盘，ifstream是从硬盘到内存。在C++中，有一个stream这个类，所有的I/O都以这个“流”类为基础的，包括我们要认识的文件I/O.
+//class stream-->child class fstream-->child class ifstream/ofstream.
 void check_files(ifstream& in_file, string& in_name,
                  ofstream& out_file, string& out_name) {
   if (!in_file.is_open()) {
@@ -66,8 +67,7 @@ int main(int argc, char* argv[]) {
 
   string line;
 
-  // prep the measurement packages (each line represents a measurement at a
-  // timestamp)
+  // prep the measurement packages (each line represents a measurement at a timestamp)
   while (getline(in_file_, line)) {
 
     string sensor_type;
@@ -136,6 +136,9 @@ int main(int argc, char* argv[]) {
   for (size_t k = 0; k < N; ++k) {
     // start filtering from the second frame (the speed is unknown in the first
     // frame)
+    //radar and lidar 
+    //common:     F/P/Q
+    //difference: H/R
     fusionEKF.ProcessMeasurement(measurement_pack_list[k]);
 
     // output the estimation

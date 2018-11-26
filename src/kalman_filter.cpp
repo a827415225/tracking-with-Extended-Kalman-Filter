@@ -72,6 +72,7 @@ VectorXd RadarCartesianToPolar(const VectorXd &x_state){
   if(rho < 0.000001)
     rho = 0.000001;
 
+  //  differential (velocity)
   rho_dot = (px * vx + py * vy) / rho;
 
   VectorXd z_pred = VectorXd(3);

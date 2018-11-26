@@ -149,6 +149,10 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
      * Update the state and covariance matrices.
    */
 
+
+//radar and lidar 
+//common:     F/P/Q
+//difference: H/R
   if (measurement_pack.sensor_type_ == MeasurementPackage::RADAR) {
     // Radar updates
 
